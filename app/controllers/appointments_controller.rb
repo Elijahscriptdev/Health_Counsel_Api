@@ -5,7 +5,8 @@ class AppointmentsController < ApplicationController
   def index
     @appointments = Appointment.all
 
-    render json: @appointments
+    # render json: @appointments
+    render json: current_user.appointments.order(created_at: :desc), include: :doctor
   end
 
   # GET /appointments/1
@@ -16,6 +17,7 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   def create
     @appointment = Appointment.new(appointment_params)
+    
 
     if @appointment.save
       render json: @appointment, status: :created, location: @appointment
@@ -46,6 +48,6 @@ class AppointmentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def appointment_params
-      params.require(:appointment).permit(:meeting_info, :doctor_id, :user_id)
+      params.permit(:meeting_info, :doctor_id, :user_id)
     end
 end
