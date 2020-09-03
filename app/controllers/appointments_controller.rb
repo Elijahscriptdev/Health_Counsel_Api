@@ -1,11 +1,11 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :update, :destroy]
-
+  # skip_before_action :authorize_request, only: [:show]
   # GET /appointments
   def index
-    @appointments = Appointment.all
-
-    # render json: @appointments
+    # @appointments = Appointment.all
+    # @user = current_user
+    # render json: User.first.appointments.order(created_at: :desc), include: :doctor
     render json: current_user.appointments.order(created_at: :desc), include: :doctor
   end
 
@@ -16,14 +16,17 @@ class AppointmentsController < ApplicationController
 
   # POST /appointments
   def create
-    @appointment = Appointment.new(appointment_params)
+    # @appointment = Appointment.new(appointment_params)
     
 
-    if @appointment.save
-      render json: @appointment, status: :created, location: @appointment
-    else
-      render json: @appointment.errors, status: :unprocessable_entity
-    end
+    # if @appointment.save
+    #   render json: @appointment, status: :created, location: @appointment
+    # else
+    #   render json: @appointment.errors, status: :unprocessable_entity
+    # end
+
+    @appointment = Appointment.create!(appointment_params)
+    json_response(@appointment)
   end
 
   # PATCH/PUT /appointments/1
@@ -48,6 +51,6 @@ class AppointmentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def appointment_params
-      params.permit(:meeting_info, :doctor_id, :user_id)
+      params.permit(:meeting_info, :date, :time, :doctor_id, :user_id)
     end
 end
