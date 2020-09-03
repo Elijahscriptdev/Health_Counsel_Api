@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# spec/support/request_spec_helper
 module RequestSpecHelper
   # Parse JSON response to ruby hash
   def json

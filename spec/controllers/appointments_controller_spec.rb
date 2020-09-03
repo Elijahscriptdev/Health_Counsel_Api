@@ -28,18 +28,36 @@
 #   # This should return the minimal set of attributes required to create a valid
 #   # Appointment. As you add validations to Appointment, be sure to
 #   # adjust the attributes here as well.
-#   let(:valid_attributes) {
-#     {meeting_info: "feeling tensed and stressed", date: "9/09/2020", time: "2:00", doctor_id: 1, user_id: 3}
-#   }
+# #   let(:valid_attributes) {
+# #     {meeting_info: "feeling tensed and stressed", date: "9/09/2020",
+#           time: "2:00", doctor_id: 1, user_id: 3}
+# #   }
 
-#   let(:invalid_attributes) {
-#     skip("Add a hash of attributes invalid for your model")
+# #   let(:invalid_attributes) {
+# #     {meeting_info: "feeling tensed and stressed", date: "9/09/2020",
+# time: "2:00", doctor_id: 1, user_id: 3}
+# #   }
+
+# # let(:valid_attributes) {
+# #     {meeting_info: "feeling tensed and stressed", date: "9/09/2020",
+# time: "2:00", doctor_id: 1, user_id: 3}
+# #   }
+#   let!(:user) { create(:user) }
+#   let!(:doctor) { create(:doctor)}
+# let(:valid_attributes) {
+# {meeting_info: "feeling tensed and stressed", date: "9/09/2020",
+# time: "2:00", doctor_id: doctor.id, user_id: user.id}
+# }
+
+# let(:invalid_attributes) {
+#     {meeting_info: nil, date: nil, time: nil, doctor_id: nil, user_id: nil}
 #   }
 
 #   # This should return the minimal set of values that should be in the session
 #   # in order to pass any filters (e.g. authentication) defined in
 #   # AppointmentsController. Be sure to keep this updated too.
-#   let(:valid_session) { {meeting_info: "feeling tensed and stressed", date: "9/09/2020", time: "2:00", doctor_id: doctor_id, user_id: user_id} }
+#   let(:valid_session) { {meeting_info: "feeling tensed and stressed", date: "9/09/2020",
+# time: "2:00", doctor_id: doctor.id, user_id: user.id} }
 
 #   describe "GET #index" do
 #     it "returns a success response" do
@@ -84,46 +102,46 @@
 #     end
 #   end
 
-#   describe "PUT #update" do
-#     context "with valid params" do
-#       let(:new_attributes) {
-#         skip("Add a hash of attributes valid for your model")
-#       }
+#   # describe "PUT #update" do
+#   #   context "with valid params" do
+#   #     let(:new_attributes) {
+#   #       skip("Add a hash of attributes valid for your model")
+#   #     }
 
-#       it "updates the requested appointment" do
-#         appointment = Appointment.create! valid_attributes
-#         put :update, params: {id: appointment.to_param, appointment: new_attributes}, session: valid_session
-#         appointment.reload
-#         skip("Add assertions for updated state")
-#       end
+#   #     it "updates the requested appointment" do
+#   #       appointment = Appointment.create! valid_attributes
+#   #       put :update, params: {id: appointment.to_param, appointment: new_attributes}, session: valid_session
+#   #       appointment.reload
+#   #       skip("Add assertions for updated state")
+#   #     end
 
-#       it "renders a JSON response with the appointment" do
-#         appointment = Appointment.create! valid_attributes
+#   #     it "renders a JSON response with the appointment" do
+#   #       appointment = Appointment.create! valid_attributes
 
-#         put :update, params: {id: appointment.to_param, appointment: valid_attributes}, session: valid_session
-#         expect(response).to have_http_status(:ok)
-#         expect(response.content_type).to eq('application/json')
-#       end
-#     end
+#   #       put :update, params: {id: appointment.to_param, appointment: valid_attributes}, session: valid_session
+#   #       expect(response).to have_http_status(:ok)
+#   #       expect(response.content_type).to eq('application/json')
+#   #     end
+#   #   end
 
-#     context "with invalid params" do
-#       it "renders a JSON response with errors for the appointment" do
-#         appointment = Appointment.create! valid_attributes
+#   #   context "with invalid params" do
+#   #     it "renders a JSON response with errors for the appointment" do
+#   #       appointment = Appointment.create! valid_attributes
 
-#         put :update, params: {id: appointment.to_param, appointment: invalid_attributes}, session: valid_session
-#         expect(response).to have_http_status(:unprocessable_entity)
-#         expect(response.content_type).to eq('application/json')
-#       end
-#     end
-#   end
+#   #       put :update, params: {id: appointment.to_param, appointment: invalid_attributes}, session: valid_session
+#   #       expect(response).to have_http_status(:unprocessable_entity)
+#   #       expect(response.content_type).to eq('application/json')
+#   #     end
+#   #   end
+#   # end
 
-#   describe "DELETE #destroy" do
-#     it "destroys the requested appointment" do
-#       appointment = Appointment.create! valid_attributes
-#       expect {
-#         delete :destroy, params: {id: appointment.to_param}, session: valid_session
-#       }.to change(Appointment, :count).by(-1)
-#     end
-#   end
+#   # describe "DELETE #destroy" do
+#   #   it "destroys the requested appointment" do
+#   #     appointment = Appointment.create! valid_attributes
+#   #     expect {
+#   #       delete :destroy, params: {id: appointment.to_param}, session: valid_session
+#   #     }.to change(Appointment, :count).by(-1)
+#   #   end
+#   # end
 
 # end
