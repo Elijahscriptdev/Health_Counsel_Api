@@ -122,7 +122,7 @@ $ bundle exec rspec
   ```
 
 ### Create appointments
-  Returns a json data of the created measurements
+  Returns a json data of the created appointments
 
 * **URL**
   /appointments
