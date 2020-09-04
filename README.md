@@ -2,10 +2,6 @@
 
 Health Counsel Api is a RESTful API that allows authenticated users to get appointments with doctors with different specialty for treatments or counsel.
 
-<!-- ## Database ERD
-
-![Screenshot of the ERD](images/Final-Capstone-ERD.png) -->
-
 ## Live Version
 
 [Live Version](https://healthcounsel-api.herokuapp.com/)
@@ -64,7 +60,10 @@ $ bundle exec rspec
  
  * **Data Params**
    **Required:**
-   `name=[string]` `email=[string]` `password=[string]` `password_confirmation=[string]`
+   `name=[string]` 
+   `email=[string]` 
+   `password=[string]` 
+   `password_confirmation=[string]`
 
 * **Success Response:**
   * **Code:** 201
@@ -134,7 +133,11 @@ $ bundle exec rspec
  
  * **Data Params**
    **Required:**
-   `meeting_info=[string]` `date=[decimal]` `time=[integer]` `doctor_id=[integer]` `user_id=[integer]`
+   `meeting_info=[string]` 
+   `date=[decimal]` 
+   `time=[integer]` 
+   `doctor_id=[integer]` 
+   `user_id=[integer]`
 
 * **Success Response:**
   * **Code:** 201
