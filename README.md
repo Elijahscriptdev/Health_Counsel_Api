@@ -4,7 +4,7 @@ Health Counsel Api is a RESTful API that allows authenticated users to get appoi
 
 ## Live Version
 
-[Live Version](https://healthcounsel-api.herokuapp.com/)
+[Live Version](https://healthcounsel-api.herokuapp.com/doctors)
 
 ## Getting Started
 
