@@ -167,7 +167,7 @@ $ bundle exec rspec
     .catch(error => console.log(error))
 
 ### Get Appointments
-  Returns a json data of all measurements that belongs to the authenticated user
+  Returns a json data of all appointments that belongs to the authenticated user
 
 * **URL**
   /appointments
@@ -220,12 +220,77 @@ $ bundle exec rspec
     .then(response => console.log(response))
     .catch(error => console.log(error))
   ```
-<!-- 
-### Get Appointments
-  Returns a json data of a specific measurement
+
+  ### Get Doctors
+  Returns a json data of all Doctors that belongs to different specialty
 
 * **URL**
-  /appointments/:id
+  /doctors
+* **Method:**
+  `GET`
+
+* ** URL Params**
+  None
+ 
+ * **Data Params**
+  None
+
+* **Success Response:**
+  * **Code:** 200
+	  **Content:** `[
+        {
+        id: 1,
+        name: "Tasha",
+        specialty: "Pediatry",
+        hospital: " lue Wave Hospital",
+        age: "45",
+        experience_level: "Advance",
+        created_at: "2020-09-03T22:34:26.652Z",
+        updated_at: "2020-09-03T22:34:26.652Z"
+        },
+        {
+        id: 2,
+        name: "Moses",
+        specialty: "Optometry",
+        hospital: " re Ofe Hospital",
+        age: "36",
+        experience_level: "Advance",
+        created_at: "2020-09-03T22:36:43.293Z",
+        updated_at: "2020-09-03T22:36:43.293Z"
+        },
+        {
+        id: 3,
+        name: "Victor",
+        specialty: "Cardiologists",
+        hospital: "Lifeline Hospital",
+        age: "41",
+        experience_level: "Advance",
+        created_at: "2020-09-03T22:40:56.583Z",
+        updated_at: "2020-09-03T22:40:56.583Z"
+        }
+    ]	  `
+
+* **Error Response:**
+  * **Code:** 422
+    **Content:** `{ message: "Missing token" }`
+
+* **Sample Call:**
+  ```javascript
+	axios.get("/doctors",
+	  {
+	    headers: {
+	      Authorization: AUTH_TOKEN,
+	    },
+    )
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
+  ```
+
+### Get specific Doctor
+  Returns a json data of a specific doctor
+
+* **URL**
+  /doctors/:id
 * **Method:**
   `GET`
 
@@ -238,15 +303,24 @@ $ bundle exec rspec
 
 * **Success Response:**
   * **Code:** 200
-	  **Content:** `{ id: 1, user_id: 1, measurement_type_id: 1 value: 10.0, created_at: 01/01/1979 }`
+	  **Content:** `{
+id: 1,
+name: "Tasha",
+specialty: "Pediatry",
+hospital: " lue Wave Hospital",
+age: "45",
+experience_level: "Advance",
+created_at: "2020-09-03T22:34:26.652Z",
+updated_at: "2020-09-03T22:34:26.652Z"
+}`
 
 * **Error Response:**
   * **Code:** 404
-    **Content:** `{ message: "Couldn't find Measurement with 'id'=ID" }`
+    **Content:** `{ message: "Couldn't find doctor with 'id'=ID" }`
  
 * **Sample Call:**
   ```javascript
-	axios.get("/appointments/:id",
+	axios.get("/doctors/:id",
 	  {
 	    headers: {
 	      Authorization: AUTH_TOKEN,
@@ -255,11 +329,11 @@ $ bundle exec rspec
     .then(response => console.log(response))
     .catch(error => console.log(error))
 
-### Delete Measurement
-  Returns a json data of a specific measurement
+### Delete Doctor
+  Returns a json data of a specific doctor
 
 * **URL**
-  /measurements/:id
+  /doctors/:id
 * **Method:**
   `DELETE`
 
@@ -276,19 +350,18 @@ $ bundle exec rspec
 
 * **Error Response:**
   * **Code:** 404
-    **Content:** `{ message: "Couldn't find Measurement with 'id'=ID" }`
+    **Content:** `{ message: "Couldn't find doctor with 'id'=ID" }`
  
 * **Sample Call:**
   ```javascript
-	axios.delete("/measurements/:id",
+	axios.delete("/ddoctors/:id",
 	  {
 	    headers: {
 	      Authorization: AUTH_TOKEN,
 	    },
     )
     .then(response => console.log(response))
-    .catch(error => console.log(error)) -->
-
+    .catch(error => console.log(error))
 
 
 ## Built With
