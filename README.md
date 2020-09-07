@@ -136,8 +136,6 @@ $ bundle exec rspec
    `meeting_info=[string]` 
    `date=[decimal]` 
    `time=[integer]` 
-   `doctor_id=[integer]` 
-   `user_id=[integer]`
 
 * **Success Response:**
   * **Code:** 201
