@@ -1,7 +1,7 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: %i[show update destroy]
   skip_before_action :authorize_request, only: %i[index show create]
-  
+
   # GET /doctors
   def index
     @doctors = Doctor.all
@@ -27,7 +27,7 @@ class DoctorsController < ApplicationController
 
   def create
     doctor = Doctor.create!(doctor_params)
-    auth_token = AuthenticateUser.new(doctor.email, doctor.password).call
+    auth_token = AuthenticateDoctor.new(doctor.email, doctor.password).call
     response = { message: Message.account_created, auth_token: auth_token }
     json_response(response, :created)
   end
@@ -56,6 +56,6 @@ class DoctorsController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def doctor_params
     params.permit(:name, :email, :password, :password_confirmation,
-       :speciality, :hospital, :age, :experience_level)
+                  :speciality, :hospital, :age, :experience_level)
   end
 end
