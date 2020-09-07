@@ -1,6 +1,7 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: %i[show update destroy]
-  skip_before_action :authorize_request, only: %i[index show]
+  skip_before_action :authorize_request, only: %i[index show create]
+  
   # GET /doctors
   def index
     @doctors = Doctor.all
@@ -14,14 +15,21 @@ class DoctorsController < ApplicationController
   end
 
   # POST /doctors
-  def create
-    @doctor = Doctor.new(doctor_params)
+  # def create
+  #   @doctor = Doctor.new(doctor_params)
 
-    if @doctor.save
-      render json: @doctor, status: :created, location: @doctor
-    else
-      render json: @doctor.errors, status: :unprocessable_entity
-    end
+  #   if @doctor.save
+  #     render json: @doctor, status: :created, location: @doctor
+  #   else
+  #     render json: @doctor.errors, status: :unprocessable_entity
+  #   end
+  # end
+
+  def create
+    doctor = Doctor.create!(doctor_params)
+    auth_token = AuthenticateUser.new(doctor.email, doctor.password).call
+    response = { message: Message.account_created, auth_token: auth_token }
+    json_response(response, :created)
   end
 
   # PATCH/PUT /doctors/1
@@ -47,6 +55,7 @@ class DoctorsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def doctor_params
-    params.require(:doctor).permit(:name, :speciality, :hospital, :age, :experience_level)
+    params.permit(:name, :email, :password, :password_confirmation,
+       :speciality, :hospital, :age, :experience_level)
   end
 end
