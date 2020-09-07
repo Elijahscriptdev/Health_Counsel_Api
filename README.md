@@ -331,6 +331,88 @@ updated_at: "2020-09-03T22:34:26.652Z"
     )
     .then(response => console.log(response))
     .catch(error => console.log(error))
+    
+ ### Signup Doctor
+  Returns an authentication token to authorize the subsequent resquests.
+
+* **URL**
+  /doctor-signup
+
+* **Method:**
+  `POST`
+
+* ** URL Params**
+  None
+ 
+ * **Data Params**
+   **Required:**
+   `name=[string]` 
+   `email=[string]` 
+   `password=[string]` 
+   `password_confirmation=[string]`
+   `speciality=[string]`
+   `hospital=[string]`
+   `age=[string]`
+   `experiene_level=[string]`
+
+* **Success Response:**
+  * **Code:** 201
+	  **Content:** `{ auth_token: JWT_GENERATED_TOKEN }`
+
+* **Error Response:**
+  * **Code:** 422
+    **Content:** `{ message: "Missing any of the required fields" }`
+
+* **Sample Call:**
+  ```javascript
+	axios.post("/signup", {
+	    name: 'Willam Smith',
+	    email: williamsmith@mail.com,
+	    password: 123456,
+	    password_confirmation: 123456,
+	    speciality: 'Dermatologists',
+	    hospital: 'Ore Ofe Hospital',
+	    age: '36',
+	    experience_level: 'Advanced'
+	  })
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
+  ```
+
+### Login Doctor
+  Returns an authentication token to authorize an existing user.
+
+* **URL**
+  /auth/login
+* **Method:**
+  `POST`
+
+* ** URL Params**
+  None
+ 
+ * **Data Params**
+   **Required:**
+   `email=[string]` `password=[string]`
+
+* **Success Response:**
+  * **Code:** 200
+	  **Content:** `{ auth_token: JWT_GENERATED_TOKEN }`
+
+* **Error Response:**
+  * **Code:** 401
+    **Content:** `{ message: "Invalid Credentials" }`
+
+* **Sample Call:**
+  ```javascript
+	axios.post("/auth/login",
+	  {
+	    email: williamsmith.com,
+	    password: 123456,
+	  }
+    )
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
+  ```
 
 ### Delete Doctor
   Returns a json data of a specific doctor
