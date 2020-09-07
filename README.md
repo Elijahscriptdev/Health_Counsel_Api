@@ -437,7 +437,7 @@ updated_at: "2020-09-03T22:34:26.652Z"
  
 * **Sample Call:**
   ```javascript
-	axios.delete("/ddoctors/:id",
+	axios.delete("/doctors/:id",
 	  {
 	    headers: {
 	      Authorization: AUTH_TOKEN,
