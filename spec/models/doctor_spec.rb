@@ -7,6 +7,6 @@ RSpec.describe Doctor, type: :model do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:hospital) }
   it { should validate_presence_of(:age) }
-  it { should validate_presence_of(:specialty) }
+  it { should validate_presence_of(:speciality) }
   it { should validate_presence_of(:experience_level) }
 end
