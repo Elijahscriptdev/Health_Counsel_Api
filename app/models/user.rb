@@ -4,5 +4,6 @@ class User < ApplicationRecord
   has_many :appointments
   has_many :doctors, through: :appointments
 
-  validates_presence_of :name, :email, :password_digest
+  validates :email, uniqueness: true
+  validates_presence_of :name, :password_digest
 end
