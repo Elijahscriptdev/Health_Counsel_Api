@@ -10,7 +10,7 @@ class AuthenticationController < ApplicationController
 
   def authenticate
 
-  user = {}
+  # user = {}
   
     if User.find_by(email: auth_params[:email])
       auth_token =
