@@ -28,7 +28,7 @@ class DoctorsController < ApplicationController
   def create
     doctor = Doctor.create!(doctor_params)
     auth_token = AuthenticateDoctor.new(doctor.email, doctor.password).call
-    response = { message: Message.account_created, auth_token: auth_token }
+    response = { message: Message.account_created, auth_token: auth_token, doctor: doctor }
     json_response(response, :created)
   end
 
