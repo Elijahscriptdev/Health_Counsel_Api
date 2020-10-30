@@ -17,7 +17,7 @@ class AuthenticationController < ApplicationController
       auth_token =
         AuthenticateDoctor.new(auth_params[:email], auth_params[:password]).call
     end
-    json_response(auth_token: auth_token, user: user || doctor: doctor)
+    json_response(auth_token: auth_token)
   end
 
   private
