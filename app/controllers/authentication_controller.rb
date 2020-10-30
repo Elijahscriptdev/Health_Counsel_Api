@@ -10,7 +10,7 @@ class AuthenticationController < ApplicationController
 
   def authenticate
 
-  # user = {}
+  user = {}
   
     if User.find_by(email: auth_params[:email])
       auth_token =
@@ -22,10 +22,7 @@ class AuthenticationController < ApplicationController
         AuthenticateDoctor.new(auth_params[:email], auth_params[:password]).call
       user = Doctor.find_by(email: auth_params[:email])
     end
-    json_response( response: {
-      auth_token: auth_token,
-      user: user 
-      })
+    json_response(auth_token: auth_token, user: user )
   end
 
   private
