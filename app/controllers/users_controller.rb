@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     json_response(response, :created)
   end
 
+  def show
+    json_response(current_user)
+  end
+
   def index
     json_response(current_user)
   end
