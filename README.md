@@ -2,10 +2,6 @@
 
 Health Counsel Api is a RESTful API that allows authenticated users to get appointments with doctors with different specialty for treatments or counsel.
 
-## Live Version
-
-[Live Version](https://healthcounsel-api.herokuapp.com/doctors)
-
 ## Getting Started
 
 Clone the repository into your local computer.
